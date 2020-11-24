@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
-   $theloai = TheLoai::all();
-
-   foreach($theloai as $loaitin) {
-    echo $loaitin->Ten."<br>";
-   }
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::prefix('news')->name('news.')->group(function() {
+        Route::get('index','AdminController@index')->name('index');
 });
+
+});
+
