@@ -1,4 +1,4 @@
-@extends('master_layout')
+@extends('admin.master_layout')
 @section('content')
        <!-- Page Content -->
         <div id="page-wrapper">
@@ -22,22 +22,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Tin Tức</td>
-                                <td>None</td>
-                                <td>Hiện</td>
+                             @foreach ($getAllData as $item)
+                             <tr class="even gradeC" align="center">
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->Ten}}</td>
+                                <td>{{$item->TenKhongDau}}</td>
+                                <td>{{$item->trangthai}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
                             </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Bóng Đá</td>
-                                <td>Thể Thao</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
+                             @endforeach
+                           
                         </tbody>
                     </table>
                 </div>

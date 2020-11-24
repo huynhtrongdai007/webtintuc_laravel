@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\TheLoai;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +17,18 @@ Route::get('/', function () {
 });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::prefix('news')->name('news.')->group(function() {
+        Route::prefix('news')->name('news.')->group(function() {
         Route::get('index','AdminController@index')->name('index');
-});
+        Route::get('index','AdminController@index')->name('index');
+    });
+    Route::prefix('category')->name('category.')->group(function() {
+        Route::get('index','CategoryController@index')->name('index');
+        Route::get('create','CategoryController@create')->name('create');
+        Route::post('store','CategoryController@store')->name('store');
+        Route::get('edit/{id}','CategoryController@edit')->name('edit');
+        Route::post('update/{id}','CategoryController@update')->name('update');
+        Route::get('destroy/{id}','CategoryController@destroy')->name('destroy');
+    });    
 
 });
 
