@@ -9,6 +9,14 @@
                             <small>List</small>
                         </h1>
                     </div>
+                    <?php
+                      $message = Session::get('message');
+                      if($message)
+                       {
+                         echo"<div class='alert alert-success'>$message</div>";
+                         Session::put('message',null);
+                       }
+                    ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -16,6 +24,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Category Parent</th>
+                                <th>Slug</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
@@ -26,10 +35,17 @@
                              <tr class="even gradeC" align="center">
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->Ten}}</td>
+                                <td>{{$item->parent_id}}</td>
                                 <td>{{$item->TenKhongDau}}</td>
-                                <td>{{$item->trangthai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                <td>
+                                    @if($item->trangthai==1)
+                                    <input type="checkbox" class="category_status_off" id="{{$item->id}}" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                    @else
+                                     <input type="checkbox" class="category_status_on" id="{{$item->id}}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                    @endif
+                                </td>
+                                <td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="{{ route('admin.category.destroy', ['id'=>$item->id]) }}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ route('admin.category.edit', ['id'=>$item->id]) }}">Edit</a></td>
                             </tr>
                              @endforeach
                            

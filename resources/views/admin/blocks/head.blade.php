@@ -22,3 +22,4 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="{{ asset('backend/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">

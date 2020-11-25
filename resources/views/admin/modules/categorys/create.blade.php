@@ -37,6 +37,9 @@
                         <div class="form-group">
                             <label>Category Name</label>
                             <input class="form-control" name="Ten" placeholder="Please Enter Category Name" />
+                            @error('Ten')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-default">Category Add</button>
                         <button type="reset" class="btn btn-default">Reset</button>
