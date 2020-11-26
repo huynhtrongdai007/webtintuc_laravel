@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Admin Area - Khoa Phạm</a>
+            <a class="navbar-brand" href="index.html"></a>
         </div>
         <!-- /.navbar-header -->
 
@@ -50,17 +50,30 @@
                         <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Danh Mục <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ route('admin.category.index') }}">List Category</a>
+                                <a href="{{ route('admin.category.index') }}">Danh Sách Danh Mục</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.category.create') }}">Add Category</a>
+                                <a href="{{ route('admin.category.create') }}">Thêm Danh Mục</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Loại Tin<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ route('admin.typeofnews.index') }}">Danh Sách Loại Tin</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.typeofnews.create') }}">Thêm Loại Tin</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
                     <li>
                         <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

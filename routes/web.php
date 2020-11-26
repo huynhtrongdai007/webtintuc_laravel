@@ -28,7 +28,16 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}','CategoryController@edit')->name('edit');
         Route::post('update/{id}','CategoryController@update')->name('update');
         Route::get('destroy/{id}','CategoryController@destroy')->name('destroy');
-    });    
+    });  
+    
+    Route::prefix('typeofnews')->name('typeofnews.')->group(function(){
+        Route::get('index','TypeOfNewsController@index')->name('index');
+        Route::get('create','TypeOfNewsController@create')->name('create');
+        Route::post('store','TypeOfNewsController@store')->name('store');
+        Route::get('edit/{id}','TypeOfNewsController@edit')->name('edit');
+        Route::post('update/{id}','TypeOfNewsController@update')->name('update');
+        Route::get('destroy/{id}','TypeOfNewsController@destroy')->name('destroy');
+    });
 
 });
 
