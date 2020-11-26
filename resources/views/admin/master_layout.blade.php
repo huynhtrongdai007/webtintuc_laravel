@@ -10,3 +10,4 @@
 
 
 @include('admin.blocks.footer')
+@yield('script')

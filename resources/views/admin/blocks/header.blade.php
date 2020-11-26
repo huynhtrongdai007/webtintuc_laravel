@@ -75,13 +75,13 @@
                     <!-- /.nav-second-level -->
                 </li>
                     <li>
-                        <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-cube fa-fw"></i>Tin Tức<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">List Product</a>
+                                <a href="{{ route('admin.news.index')}}">Danh Sách Tin Tức</a>
                             </li>
                             <li>
-                                <a href="#">Add Product</a>
+                                <a href="{{ route('admin.news.create')}}">Thêm Tin Tức</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
