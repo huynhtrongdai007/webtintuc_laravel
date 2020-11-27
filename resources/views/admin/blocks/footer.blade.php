@@ -19,6 +19,7 @@
 <!-- page script -->
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script type="text/javascript" language="javascript" src="{{ asset('backend/ckeditor/ckeditor.js') }}" ></script>
 <script>
 $(document).ready(function() {
     $('#dataTables-example').DataTable({

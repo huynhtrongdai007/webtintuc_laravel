@@ -11,16 +11,21 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+                        <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
                                 <label>Thể Loại</label>
-                                <select class="form-control" name="" id="theloai">
+                                <select class="form-control" id="theloai">
                                 <option value="">Chọn Thể Loại</option>
                                     @foreach ($getTheLoai as $item)
                                     <option value="{{$item->id}}">{{$item->Ten}}</option>
                                     @endforeach
                                 </select>
+                               
                             </div>
+                            @error('idTheLoai')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                             <div class="form-group">
                                 <label>Loại Tin</label>
                                 <select class="form-control" name="idLoaiTin" id="loaitin">
@@ -29,33 +34,50 @@
                                     <option value="{{$item->id}}">{{$item->Ten}}</option>
                                     @endforeach
                                 </select>
+                                
                             </div>
+                            @error('idLoaiTin')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
                             <div class="form-group">
-                                <label>Tên</label>
-                                <input class="form-control" name="txtName" placeholder="Please Enter Username" />
+                              
+                                <label>Tiêu Đề</label>
+                                <input class="form-control" value="{{old("TieuDe")}}" name="TieuDe" placeholder="Nhập Tiêu Đề" />
+                                @error('TieuDe')
+                                 <span class="text-danger">{{$message}}</span>
+                                 @enderror
                             </div>
                         
                             <div class="form-group">
                                 <label>Tóm Tắc</label>
-                                <textarea class="form-control" rows="3" name="txtIntro"></textarea>
+                                <textarea class="form-control ckeditor" id="demo" rows="5" name="TomTat" placeholder="Nhập Tóm tắc">{{old("TomTat")}}</textarea>
+                                @error('TomTat')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Nội Dung</label>
-                                <textarea class="form-control" rows="3" name="txtContent"></textarea>
+                                <textarea class="form-control ckeditor" id="demo" rows="5" name="NoiDung" placeholder="Nhập Nội Dung">{{old("NoiDung")}}</textarea>
+                                @error('NoiDung')
+                                <span class="text-danger">{{$message}}</span>
+                               @enderror
                             </div>
                             <div class="form-group">
                                 <label>Hình Ảnh</label>
-                                <input type="file" name="fImages">
+                                <input type="file" name="Hinh" value="{{old('Hinh')}}">
+                                @error('Hinh')
+                                <span class="text-danger">{{$message}}</span>
+                               @enderror
                             </div>
                           
                         
                             <div class="form-group">
-                                <label>Product Status</label>
+                                <label>Tin Nổi Bật</label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
+                                    <input name="NoiBat" value="1" checked="" type="radio">Nổi Bật
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
+                                    <input name="NoiBat" value="0" type="radio">Không Nổi Bật
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-default">Thêm</button>

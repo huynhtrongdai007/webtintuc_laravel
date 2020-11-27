@@ -14,33 +14,34 @@
                             <thead>
                                 <tr align="center">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Delete</th>
-                                    <th>Edit</th>
+                                    <th>Hinh</th>
+                                    <th>Tiêu Đề</th>
+                                    <th>Tóm Tắt</th>
+                                    <th>Thể Loại</th>
+                                    <th>Loại Tin</th>
+                                    <th>Xem</th>
+                                    <th>Nổi Bật</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="odd gradeX" align="center">
-                                    <td>1</td>
-                                    <td>Áo Thun Nana</td>
-                                    <td>200.000 VNĐ</td>
-                                    <td>3 Minutes Age</td>
-                                    <td>Hiện</td>
-                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                                </tr>
-                                <tr class="even gradeC" align="center">
-                                    <td>2</td>
-                                    <td>Áo Thun Polo</td>
-                                    <td>250.000 VNĐ</td>
-                                    <td>1 Hours Age</td>
-                                    <td>Ẩn</td>
-                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                                </tr>
+                                @foreach ($getAllTinTuc as $item)
+                                    <tr class="odd gradeX" align="center">
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->TieuDe}}</td>
+                                        <td><img width="100px" src="{{asset("uploads/images/tintuc/{$item->Hinh}")}}" alt=""></td>
+                                        <td>{{$item->TomTat}}</td>
+                                        <td>{{$item->loaitin->theloai->Ten}}</td>
+                                        <td>{{$item->loaitin->Ten}}</td>
+                                        <td>{{$item->SoLuotXem}}</td>
+                                        <td>{{$item->NoiBat}}</td>
+                                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{ route('admin.news.destroy', ['id'=>$item->id]) }}"> Delete</a> | 
+                                            <i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.news.edit',['id'=>$item->id])}}">Edit</a></td>
+                                      
+                                    </tr>
+                                @endforeach
+                                
+                              
                             </tbody>
                         </table>
                     </div>
