@@ -11,6 +11,14 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
+                        <?php
+                        $message = Session::get('message');
+                        if($message)
+                         {
+                           echo"<div class='alert alert-success'>$message</div>";
+                           Session::put('message',null);
+                         }
+                      ?>
                         <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">

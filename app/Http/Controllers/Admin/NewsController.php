@@ -9,7 +9,7 @@ use App\TheLoai;
 use App\TinTuc;
 use App\LoaiTin;
 use DateTime;
-
+use session;
 class NewsController extends Controller
 {
     /**
@@ -107,6 +107,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $hinh = TinTuc::find($id);
         $validatedData = $request->validate([
             'TieuDe' => 'required|min:3|max:255',
             'idLoaiTin'=>'required',
@@ -127,8 +128,8 @@ class NewsController extends Controller
                 $image = Str::random(4)."_".$name;
             }
             
-            $file->move("uploads/images/tintuc/".$image);
-
+            $file->move("uploads/images/tintuc/",$image);
+            unlink("uploads/images/tintuc/".$hinh->Hinh);
             $data['Hinh'] = $image;
             
         }
