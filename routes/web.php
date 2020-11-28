@@ -50,5 +50,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('ajax_loaitin/{id}','NewsController@getLoaiTin');
 
     });
+
+    Route::prefix('slide')->name('slide.')->group(function() {
+        Route::get('index','SlideController@index')->name('index');
+        Route::get('create','SlideController@create')->name('create');
+        Route::post('store','SlideController@store')->name('store');
+        Route::get('edit/{id}','SlideController@edit')->name('edit');
+        Route::post('update/{id}','SlideController@update')->name('update');
+        Route::get('destroy/{id}','SlideController@destroy')->name('destroy');
+    });
 });
 

@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\TheLoai;
-use App\TinTuc;
-use App\LoaiTin;
+use App\Slide;
 use DateTime;
-use session;
-class NewsController extends Controller
+use Illuminate\Support\Str;
+
+class SlideController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $getAllTinTuc=TinTuc::orderBy('id','DESC')->get();
-        return view('admin.modules.news.index',compact('getAllTinTuc'));
+        $getAllSlide = Slide::all();
+        return view('admin.modules.slide.index',compact('getAllSlide'));
     }
 
     /**
@@ -30,9 +28,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $getTheLoai = TheLoai::all();
-        $getLoaiTin = LoaiTin::all();
-        return view('admin.modules.news.create',compact('getTheLoai','getLoaiTin'));
+        return view('admin.modules.slide.create');
     }
 
     /**
@@ -43,34 +39,32 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+      
         $validatedData = $request->validate([
-            'TieuDe' => 'required|unique:tintuc,TieuDe|min:3|max:255',
-            'idLoaiTin'=>'required',
-            'TomTat'=>'required',
+            'Ten' => 'required|unique:slide,Ten|min:3|max:255',
             'NoiDung'=>'required',
+            'link'=>'required',
             'Hinh'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-
         $data = $request->except('_token');
-        $data['TieuDeKhongDau'] = Str::slug($request->TieuDe);
         $file = $request->file("Hinh");
         $data['created_at'] = new DateTime();
+        
         if($file) {
-          
             $name = $file->getClientOriginalName();
             $image = Str::random(4)."_".$name;
-            while(file_exists("uploads/images/tintuc/".$image)) {
+            while(file_exists("uploads/slide/".$image)) {
                 $image = Str::random(4)."_".$name;
             }
-            $file->move('uploads/images/tintuc/',$image);
-            $data['Hinh'] = $image;
-        
-        } else{
-            $data['Hinh'] = '';
+            $file->move("uploads/slide/",$image);
+            $data["Hinh"] = $image;
+        } else {
+            $data["Hinh"] = '';
         }
 
-        TinTuc::insert($data);
-        return back()->with('message','Insertd Success');
+        Slide::insert($data);    
+
+        return back()->with('message','Inserd SeccessFully');
     }
 
     /**
@@ -92,10 +86,8 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $getById = TinTuc::find($id);
-        $getTheLoai = TheLoai::all();
-        $getLoaiTin = LoaiTin::all();
-        return view('admin.modules.news.edit',compact('getById','getTheLoai','getLoaiTin'));
+        $getById = Slide::find($id);
+        return view('admin.modules.slide.edit',compact('getById'));
     }
 
     /**
@@ -107,35 +99,32 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $hinh = TinTuc::find($id);
+
         $validatedData = $request->validate([
-            'TieuDe' => 'required|min:3|max:255',
-            'idLoaiTin'=>'required',
-            'TomTat'=>'required',
+            'Ten' => 'required|min:3|max:255',
             'NoiDung'=>'required',
+            'link'=>'required',
             'Hinh'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-
         $data = $request->except('_token');
-        $data['TieuDeKhongDau'] = Str::slug($request->TieuDe);
+        $hinh = Slide::find($id);
         $file = $request->file("Hinh");
         $data['updated_at'] = new DateTime();
+        
         if($file) {
-          
             $name = $file->getClientOriginalName();
             $image = Str::random(4)."_".$name;
-            while(file_exists("uploads/images/tintuc/".$image)) {
+            while(file_exists("uploads/slide/".$image)) {
                 $image = Str::random(4)."_".$name;
             }
-            
-            $file->move("uploads/images/tintuc/",$image);
-            unlink("uploads/images/tintuc/".$hinh->Hinh);
-            $data['Hinh'] = $image;
-            
-        }
-       
-        TinTuc::where('id',$id)->update($data);
-        return redirect()->route('admin.news.index')->with('message','Updated Success');
+
+            $file->move("uploads/slide/",$image);
+            unlink("uploads/slide/".$hinh->Hinh);
+            $data["Hinh"] = $image;
+        } 
+        Slide::insert($data);    
+
+        return redirect()->route('admin.slide.index')->with('message','Updated SeccessFully');
     }
 
     /**
@@ -146,19 +135,9 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $img = TinTuc::find($id);
-        TinTuc::where('id',$id)->delete();
-        unlink("uploads/images/tintuc/".$img->Hinh);
-        return redirect()->route('admin.news.index')->with('message','Deleted Success');
-    }
-
-    public function getLoaiTin($id)
-    {   
-        $loaitin = LoaiTin::where('idTheLoai',$id)->get();
-      
-        foreach($loaitin as $item) {
-           echo"<option value='".$item->id."'>".$item->Ten."</option>";
-        }
-        
+        $hinh = Slide::find($id);
+        unlink("uploads/slide/".$hinh->Hinh);
+        Slide::where('id',$id)->delete();
+        return redirect()->route('admin.slide.index')->with('message','Deleted SeccessFully');
     }
 }
