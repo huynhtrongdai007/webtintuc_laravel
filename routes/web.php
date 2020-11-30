@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::get('login','AdminController@ViewLoginAdmin')->name('login');
+    Route::post('progressLogin','AdminController@progressLogin')->name('progressLogin');
+});
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::prefix('news')->name('news.')->group(function() {
@@ -58,6 +63,15 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}','SlideController@edit')->name('edit');
         Route::post('update/{id}','SlideController@update')->name('update');
         Route::get('destroy/{id}','SlideController@destroy')->name('destroy');
+    });
+
+    Route::prefix('user')->name('user.')->group(function() {
+        Route::get('index','AdminController@index')->name('index');
+        Route::get('create','AdminController@create')->name('create');
+        Route::post('store','AdminController@store')->name('store');
+        Route::get('edit/{id}','AdminController@edit')->name('edit');
+        Route::post('update/{id}','AdminController@update')->name('update');
+        Route::get('destroy/{id}','AdminController@destroy')->name('destroy');
     });
 });
 

@@ -11,30 +11,38 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    <form action="" method="POST">
+                    <?php
+                        $message = Session::get('message');
+                        if($message)
+                        {
+                        echo"<div class='alert alert-success'>$message</div>";
+                        Session::put('message',null);
+                        }
+                    ?>
+                    <form action="{{route('admin.user.update',['id'=>$getById->id])}}" method="POST">
+                        @csrf   
                         <div class="form-group">
                             <label>Username</label>
-                            <input class="form-control" name="txtUser" value="quoctuan" disabled />
+                            <input class="form-control" name="name" value="{{$getById->name}}"/>
                         </div>
                         <div class="form-group">
+                            <input type="checkbox" name="changePassword" id="changePassword">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
+                            <input type="password" class="form-control password" disabled  name="password" placeholder="Please Enter Password" />
                         </div>
                         <div class="form-group">
+                           
                             <label>RePassword</label>
-                            <input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword" />
+                            <input type="password" class="form-control password" disabled name="re_password" placeholder="Please Enter RePassword" />
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="txtEmail" placeholder="Please Enter Email" />
-                        </div>
+                   
                         <div class="form-group">
                             <label>User Level</label>
                             <label class="radio-inline">
-                                <input name="rdoLevel" value="1" checked="" type="radio">Admin
+                                <input name="level" value="0" checked="" type="radio">Thành Viên
                             </label>
                             <label class="radio-inline">
-                                <input name="rdoLevel" value="2" type="radio">Member
+                                <input name="level" value="2" type="radio">Admin
                             </label>
                         </div>
                         <button type="submit" class="btn btn-default">User Edit</button>
@@ -47,4 +55,18 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $("#changePassword").change(function() {
+                if($(this).is(":checked")) {
+                    $(".password").removeAttr('disabled');
+                } else {
+                    $(".password").attr('disabled','');
+                }
+
+            });
+        });
+    </script>
 @endsection
