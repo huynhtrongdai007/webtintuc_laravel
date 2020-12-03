@@ -3,87 +3,24 @@
         <li href="#" class="list-group-item menu1 active">
             Menu
         </li>
-
+        @foreach ($theloai as $item)
+        @if (count($item->loaitin) > 0)
+            
+       
         <li href="#" class="list-group-item menu1">
-            Level 1
+           {{$item->Ten}}
         </li>
         <ul>
+            @foreach ($item->loaitin as  $item)
             <li class="list-group-item">
-                <a href="#">Level2</a>
+                <a href="#">{{$item->Ten}}</a>
             </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
+            @endforeach
         </ul>
+        @endif
+        @endforeach
+       
 
-        <li href="#" class="list-group-item menu1">
-            <a href="#">Level 1</a>
-        </li>
-        <ul>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-        </ul>
-
-
-        <li href="#" class="list-group-item menu1">
-            <a href="#">Level 1</a>
-        </li>
-
-        <ul>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-        </ul>
-
-
-        <li href="#" class="list-group-item menu1">
-            <a href="#">Level 1</a>
-        </li>
-        <ul>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Level2</a>
-            </li>
-        </ul>
-
-        <li href="#" class="list-group-item menu1">
-            <a href="#">Level 1</a>
-        </li>
-        <li href="#" class="list-group-item menu1">
-            <a href="#">Level 1</a>
-        </li>
+       
     </ul>
 </div>

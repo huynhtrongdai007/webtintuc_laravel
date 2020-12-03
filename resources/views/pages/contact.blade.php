@@ -1,9 +1,10 @@
-
-    <!-- Page Content -->
-    <div class="container">
+@extends('master_layout')
+@section('content')
+     <!-- Page Content -->
+     <div class="container">
 
     	<!-- slider -->
-            @inlcude('layout.slide')
+            @include('layout.slide')
         <!-- end slide -->
 
         <div class="space20"></div>
@@ -46,3 +47,5 @@
         <!-- /.row -->
     </div>
     <!-- end Page Content -->
+@endsection
+   

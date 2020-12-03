@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.home');
 });
+
+Route::get('home','HomeController@home')->name('home');
+
+Route::get('login','HomeController@login')->name('login');
+
+Route::get('register','HomeController@register')->name('register');
+
+Route::get('contact','HomeController@contact')->name('contact');
+
+Route::get('detail','HomeController@detail')->name('detail');
+
+Route::get('about','HomeController@about')->name('about');
+
+
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');
     Route::post('progressLogin','AdminController@progressLogin')->name('progressLogin');

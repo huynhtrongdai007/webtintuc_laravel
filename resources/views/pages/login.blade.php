@@ -1,5 +1,5 @@
 @extends('master_layout')
-@section('name')
+@section('content')
         <!-- Page Content -->
         <div class="container">
 
