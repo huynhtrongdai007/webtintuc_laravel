@@ -127,7 +127,7 @@ class AdminController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->route('admin.dashboard');
+            return view('admin.dashboard');
         } else {
         	return redirect()->route('admin.login')->with('message','Email or Password wrong');
         }

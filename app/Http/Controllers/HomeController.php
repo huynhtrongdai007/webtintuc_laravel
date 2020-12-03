@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TheLoai;
+use App\Slide;
 class HomeController extends Controller
 {
 
     function __construct() {
         $theloai = TheLoai::all();
+        $slide = Slide::all();
+        view()->share('slide',$slide);
         view()->share('theloai',$theloai);
         
     }
