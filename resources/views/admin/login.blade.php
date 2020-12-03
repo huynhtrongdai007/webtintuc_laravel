@@ -26,6 +26,14 @@
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>
+                            <?php
+                            $message = Session::get('message');
+                            if($message)
+                             {
+                               echo"<div class='alert alert-danger'>$message</div>";
+                               Session::put('message',null);
+                             }
+                          ?>
                         </form>
                     </div>
                 </div>

@@ -15,6 +15,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Username</th>
+                                <th>Email</th>
                                 <th>Level</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
@@ -25,10 +26,11 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
+                                <td>{{$item->email}}</td>
                                 <td>
                                     @if($item->level==0)
                                     Người Thường
-                                    @else:
+                                    @else
                                     Admin  
                                     @endif      
                                                                

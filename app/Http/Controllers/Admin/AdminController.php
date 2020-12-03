@@ -9,6 +9,8 @@ use DateTime;
 use App\User;
 class AdminController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -89,7 +91,7 @@ class AdminController extends Controller
             'name' => 'required|min:3|max:255',     
             ]);
         $data = $request->except('_token','re_password','changePassword');
-        $data['password'] = Bcrypt($request->password);
+      
         $data['updated_at'] = new DateTime();
         if($request->changePassword=="on") {
             $validatedData = $request->validate([
@@ -121,13 +123,18 @@ class AdminController extends Controller
 
     public function progressLogin(Request $request)
     {
-        $credentials = $request->only('email', 'password');	
+        $credentials = $request->only('email','password');	
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->route('admin.slider.index');
+            return redirect()->route('admin.dashboard');
         } else {
-        	return redirect()->route('admin.login');
+        	return redirect()->route('admin.login')->with('message','Email or Password wrong');
         }
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('admin.login');
     }
 }

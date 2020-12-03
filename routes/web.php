@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');
     Route::post('progressLogin','AdminController@progressLogin')->name('progressLogin');
+    Route::get('logout','AdminController@logout')->name('logout');
 });
 
 
@@ -26,6 +27,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('index','AdminController@index')->name('index');
         Route::get('index','AdminController@index')->name('index');
     });
+
+Route::middleware('check_login')->group(function() {
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    });
+
     Route::prefix('category')->name('category.')->group(function() {
         Route::get('index','CategoryController@index')->name('index');
         Route::get('create','CategoryController@create')->name('create');
@@ -74,4 +81,4 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('destroy/{id}','AdminController@destroy')->name('destroy');
     });
 });
-
+});

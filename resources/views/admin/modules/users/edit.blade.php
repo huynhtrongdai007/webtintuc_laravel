@@ -42,7 +42,7 @@
                                 <input name="level" value="0" checked="" type="radio">Thành Viên
                             </label>
                             <label class="radio-inline">
-                                <input name="level" value="2" type="radio">Admin
+                                <input name="level" value="1" type="radio">Admin
                             </label>
                         </div>
                         <button type="submit" class="btn btn-default">User Edit</button>
