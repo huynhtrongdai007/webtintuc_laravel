@@ -7,6 +7,7 @@ use App\TheLoai;
 use App\Slide;
 use App\LoaiTin;
 use App\TinTuc;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,18 @@ class HomeController extends Controller
 
     public function login() {
         return view('pages.login');
+    }
+
+    public function progressLogin(Request $request) {
+
+            $credentials = $request->only('email','password');	
+
+            if (Auth::attempt($credentials)) {
+                // Authentication passed...
+                return redirect('home');
+            } else {
+                return redirect()->route('login')->with('message','Email or Password wrong');
+            }
     }
 
     public function register()
@@ -56,4 +69,6 @@ class HomeController extends Controller
         TinTuc::where('id', $id)->update(['SoLuotXem' => $tintuc->SoLuotXem+1]);  
         return view('pages.detail',compact('tintuc','tinnoibat','tinlienquan'));
     }
+
+  
 }

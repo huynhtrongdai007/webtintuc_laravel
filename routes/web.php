@@ -21,7 +21,11 @@ Route::get('home','HomeController@home')->name('home');
 
 Route::get('login','HomeController@login')->name('login');
 
+Route::post('progressLogin','HomeController@progressLogin')->name('progressLogin');
+
 Route::get('register','HomeController@register')->name('register');
+
+Route::post('storeregister','HomeController@register')->name('storeregister');
 
 Route::get('contact','HomeController@contact')->name('contact');
 
@@ -30,8 +34,6 @@ Route::get('detail/{id}','HomeController@detail')->name('detail');
 Route::get('about','HomeController@about')->name('about');
 
 Route::get('category/{id}','HomeController@category')->name('category');
-
-
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');

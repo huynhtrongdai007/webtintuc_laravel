@@ -10,20 +10,30 @@
                     <div class="panel panel-default">
                           <div class="panel-heading">Đăng nhập</div>
                           <div class="panel-body">
-                            <form>
+                            <form action="{{ route('progressLogin') }}" method="POST">
+                                @csrf
                                 <div>
                                     <label>Email</label>
-                                      <input type="email" class="form-control" placeholder="Email" name="email" 
-                                      >
+                                      <input type="email" required class="form-control" placeholder="Email" name="email">
+                                     
                                 </div>
                                 <br>	
                                 <div>
                                     <label>Mật khẩu</label>
-                                      <input type="password" class="form-control" name="password">
+                                    <input type="password" required class="form-control" name="password">
+                                    
                                 </div>
                                 <br>
-                                <button type="button" class="btn btn-default">Đăng nhập
+                                <button type="submit" class="btn btn-default">Đăng nhập
                                 </button>
+                                <?php
+                                $message = Session::get('message');
+                                if($message)
+                                 {
+                                   echo"<div class='alert alert-danger'>$message</div>";
+                                   Session::put('message',null);
+                                 }
+                              ?>
                             </form>
                           </div>
                     </div>
