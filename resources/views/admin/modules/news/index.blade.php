@@ -28,7 +28,7 @@
                                 @foreach ($getAllTinTuc as $item)
                                     <tr class="odd gradeX" align="center">
                                         <td>{{$item->id}}</td>
-                                        <td><img width="100px" src="{{asset("uploads/images/tintuc/{$item->Hinh}")}}" alt=""></td>
+                                        <td><img width="100px" src="{{asset("uploads/tintuc/{$item->Hinh}")}}" alt=""></td>
                                         <td>{{$item->TieuDe}}</td>
                                         <td>{{$item->TomTat}}</td>
                                         <td>{{$item->loaitin->theloai->Ten}}</td>

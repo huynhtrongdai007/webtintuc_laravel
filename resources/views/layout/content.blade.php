@@ -21,7 +21,7 @@
                 @endphp
                 <div class="col-md-8 border-right">
                     <div class="col-md-5">
-                        <a href="detail.html">
+                        <a href="{{ route('detail', ['id'=>$news->id]) }}">
                             <img class="img-responsive" src="uploads/tintuc/{{$news['Hinh']}}" alt="">
                         </a>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="col-md-7">
                         <h3>{{$news['TieuDe']}}</h3>
                         <p>{{$news['TomTat']}}</p>
-                        <a class="btn btn-primary" href="detail.html">Xem Thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a class="btn btn-primary" href="{{ route('detail', ['id'=>$news['id']]) }}">Xem Thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
 
                 </div>
@@ -37,7 +37,7 @@
 
                 <div class="col-md-4">
                     @foreach ($data->all() as $tintuc)
-                    <a href="detail.html">
+                    <a href="{{ route('detail', ['id'=>$tintuc->id]) }}">
                         <h4>
                             <span class="glyphicon glyphicon-list-alt"></span>
                            {{$tintuc->TieuDe}}

@@ -13,7 +13,7 @@
         <ul>
             @foreach ($item->loaitin as  $item)
             <li class="list-group-item">
-                <a href="#">{{$item->Ten}}</a>
+                <a href="{{ route('category', ['id'=>$item->id,'TenKhongDau'=>$item->TenKhongDau]) }}">{{$item->Ten}}</a>
             </li>
             @endforeach
         </ul>

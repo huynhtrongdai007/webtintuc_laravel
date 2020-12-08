@@ -1,4 +1,4 @@
-@extends('master_layput')
+@extends('master_layout')
 @section('content')
 
     <!-- Page Content -->
@@ -11,7 +11,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Blog Post Title</h1>
+                <h1>{{$tintuc->TieuDe}}</h1>
 
                 <!-- Author -->
                 <p class="lead">
@@ -19,18 +19,14 @@
                 </p>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="{{asset("uploads/tintuc/$tintuc->Hinh")}}" alt="">
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span>Posted on: {{$tintuc->created_at}}</p>
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                <p class="lead">{!! $tintuc->NoiDung !!}</p>
 
                 <hr>
 
@@ -52,30 +48,20 @@
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
+                @foreach ($tintuc->comment as $item)
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading">{{$item->user->name}}
+                            <small>{{$item->created_at}}</small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        {{$item->NoiDung}}
                     </div>
                 </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
+                @endforeach
+               
 
             </div>
 
@@ -87,63 +73,21 @@
                     <div class="panel-body">
 
                         <!-- item -->
+                        @foreach ($tinlienquan as $item)
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-5">
                                 <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
+                                    <img class="img-responsive" src="{{ asset("uploads/tintuc/$item->Hinh")}}" alt="">
                                 </a>
                             </div>
                             <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
+                                <a href="#"><b>{{$item->TieuDe}}</b></a>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>{{$item->TomTat}}</p>
                             <div class="break"></div>
                         </div>
-                        <!-- end item -->
-
-                        <!-- item -->
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-5">
-                                <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="break"></div>
-                        </div>
-                        <!-- end item -->
-
-                        <!-- item -->
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-5">
-                                <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="break"></div>
-                        </div>
-                        <!-- end item -->
-
-                        <!-- item -->
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-5">
-                                <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="break"></div>
-                        </div>
+                        @endforeach
+                       
                         <!-- end item -->
                     </div>
                 </div>
@@ -153,63 +97,21 @@
                     <div class="panel-body">
 
                         <!-- item -->
+                        @foreach ($tinnoibat as $item)
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-5">
                                 <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
+                                    <img class="img-responsive" src="{{ asset("uploads/tintuc/$item->Hinh")}}" alt="">
                                 </a>
                             </div>
                             <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
+                                <a href="#"><b>{{$item->TieuDe}}</b></a>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>{{$item->TomTat}}</p>
                             <div class="break"></div>
                         </div>
-                        <!-- end item -->
-
-                        <!-- item -->
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-5">
-                                <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="break"></div>
-                        </div>
-                        <!-- end item -->
-
-                        <!-- item -->
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-5">
-                                <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="break"></div>
-                        </div>
-                        <!-- end item -->
-
-                        <!-- item -->
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-5">
-                                <a href="detail.html">
-                                    <img class="img-responsive" src="image/320x150.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7">
-                                <a href="#"><b>Project Five</b></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <div class="break"></div>
-                        </div>
+                        @endforeach
+                      
                         <!-- end item -->
                     </div>
                 </div>

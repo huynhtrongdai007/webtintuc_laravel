@@ -25,9 +25,11 @@ Route::get('register','HomeController@register')->name('register');
 
 Route::get('contact','HomeController@contact')->name('contact');
 
-Route::get('detail','HomeController@detail')->name('detail');
+Route::get('detail/{id}','HomeController@detail')->name('detail');
 
 Route::get('about','HomeController@about')->name('about');
+
+Route::get('category/{id}','HomeController@category')->name('category');
 
 
 
