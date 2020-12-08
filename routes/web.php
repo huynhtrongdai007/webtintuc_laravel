@@ -35,6 +35,8 @@ Route::get('about','HomeController@about')->name('about');
 
 Route::get('category/{id}','HomeController@category')->name('category');
 
+Route::get('logout','HomeController@logout')->name('logout');
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');
     Route::post('progressLogin','AdminController@progressLogin')->name('progressLogin');

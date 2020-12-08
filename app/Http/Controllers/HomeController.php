@@ -41,6 +41,11 @@ class HomeController extends Controller
             }
     }
 
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('home');  
+    }
+
     public function register()
     {
         return view('pages.register');
@@ -69,6 +74,5 @@ class HomeController extends Controller
         TinTuc::where('id', $id)->update(['SoLuotXem' => $tintuc->SoLuotXem+1]);  
         return view('pages.detail',compact('tintuc','tinnoibat','tinlienquan'));
     }
-
   
 }
