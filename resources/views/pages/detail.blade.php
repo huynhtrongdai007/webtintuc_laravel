@@ -33,18 +33,19 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
+                @if(Auth::check()===true)
                 <div class="well">
                     <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                    <form role="form">
+                    <form action="{{ route('admin.comment.store', ['id'=>$tintuc->id]) }}" method="POST" role="form">
+                        @csrf
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea required class="form-control" name="NoiDung" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Gửi</button>
                     </form>
                 </div>
-
                 <hr>
-
+                @endif
                 <!-- Posted Comments -->
 
                 <!-- Comment -->

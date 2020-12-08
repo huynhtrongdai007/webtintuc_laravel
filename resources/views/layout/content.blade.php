@@ -29,7 +29,7 @@
                     <div class="col-md-7">
                         <h3>{{$news['TieuDe']}}</h3>
                         <p>{{$news['TomTat']}}</p>
-                        <a class="btn btn-primary" href="{{ route('detail', ['id'=>$news['id']]) }}">Xem Thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a class="btn btn-primary" href="{{ route('detail', ['id'=>$news['id'],'TenKhongDau']) }}">Xem Thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
 
                 </div>

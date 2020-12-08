@@ -37,6 +37,8 @@ Route::get('category/{id}','HomeController@category')->name('category');
 
 Route::get('logout','HomeController@logout')->name('logout');
 
+
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');
     Route::post('progressLogin','AdminController@progressLogin')->name('progressLogin');
@@ -102,5 +104,15 @@ Route::middleware('check_login')->group(function() {
         Route::post('update/{id}','AdminController@update')->name('update');
         Route::get('destroy/{id}','AdminController@destroy')->name('destroy');
     });
+
+
+    
+    Route::prefix('comment')->name('comment.')->group(function() {
+        Route::get('index','CommentController@index')->name('index');
+        Route::post('store/{id}','CommentController@store')->name('store');
+        Route::get('destroy/{id}','CommentController@destroy')->name('destroy');
+    });
+
+
 });
 });

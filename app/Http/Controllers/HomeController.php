@@ -7,6 +7,8 @@ use App\TheLoai;
 use App\Slide;
 use App\LoaiTin;
 use App\TinTuc;
+use App\Comment;
+
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -72,7 +74,7 @@ class HomeController extends Controller
         $tinnoibat = TinTuc::where('NoiBat',1)->take(4)->get();
         $tinlienquan = TinTuc::where('idLoaiTin',$tintuc->idLoaiTin)->take(4)->get();
         TinTuc::where('id', $id)->update(['SoLuotXem' => $tintuc->SoLuotXem+1]);  
-        return view('pages.detail',compact('tintuc','tinnoibat','tinlienquan'));
+        return view('pages.detail',compact('tintuc','tinnoibat','tinlienquan',''));
     }
   
 }
