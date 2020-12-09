@@ -117,6 +117,16 @@ class HomeController extends Controller
         return back()->with('message','Updated SuccessFully');
     }
 
-
+    public function search(Request $request) {
+        $tukhoa = $request->tukhoa;
+       
+        $tintuc = TinTuc::where('TieuDe','like',"%$tukhoa%")
+        ->orWhere('TomTat','like',"%$tukhoa%")
+        ->orWhere('NoiDung','like',"%$tukhoa%")
+        ->take(30)->paginate(5);
+     
+        return view('pages.search',compact('tukhoa','tintuc'));
+    }
+    
    
 }

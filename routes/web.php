@@ -40,6 +40,8 @@ Route::get('logout','HomeController@logout')->name('logout');
 Route::get('account','HomeController@account')->name('account');
 Route::post('update_account','HomeController@update_account')->name('update_account');
 
+Route::get('search','HomeController@search')->name('search');
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');
     Route::post('progressLogin','AdminController@progressLogin')->name('progressLogin');

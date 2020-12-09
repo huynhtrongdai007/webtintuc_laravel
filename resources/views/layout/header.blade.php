@@ -22,9 +22,10 @@
                     </li>
                 </ul>
 
-                <form class="navbar-form navbar-left" role="search">
-			        <div class="form-group">
-			          <input type="text" class="form-control" placeholder="Search">
+                <form action="{{ route('search') }}" class="navbar-form navbar-left" role="search">
+                    @csrf
+                    <div class="form-group">
+			          <input type="text" name="tukhoa" class="form-control" placeholder="Search">
 			        </div>
 			        <button type="submit" class="btn btn-default">Submit</button>
 			    </form>
