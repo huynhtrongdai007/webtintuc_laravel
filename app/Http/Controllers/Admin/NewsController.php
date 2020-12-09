@@ -53,6 +53,7 @@ class NewsController extends Controller
 
         $data = $request->except('_token');
         $data['TieuDeKhongDau'] = Str::slug($request->TieuDe);
+        $data['userId'] = auth()->user()->id;
         $file = $request->file("Hinh");
         $data['created_at'] = new DateTime();
         if($file) {
@@ -118,6 +119,7 @@ class NewsController extends Controller
 
         $data = $request->except('_token');
         $data['TieuDeKhongDau'] = Str::slug($request->TieuDe);
+        $data['userId'] = auth()->user()->id;
         $file = $request->file("Hinh");
         $data['updated_at'] = new DateTime();
         if($file) {
@@ -148,7 +150,7 @@ class NewsController extends Controller
     {
         $img = TinTuc::find($id);
         TinTuc::where('id',$id)->delete();
-        unlink("uploads/images/tintuc/".$img->Hinh);
+        unlink("uploads/tintuc/".$img->Hinh);
         return redirect()->route('admin.news.index')->with('message','Deleted Success');
     }
 

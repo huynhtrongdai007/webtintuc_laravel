@@ -15,7 +15,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Start Bootstrap</a>
+                    Author:{{$tintuc->user->name}}
                 </p>
 
                 <!-- Preview Image -->

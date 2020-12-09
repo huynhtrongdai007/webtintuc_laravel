@@ -76,9 +76,7 @@
                                 @error('Hinh')
                                 <span class="text-danger">{{$message}}</span>
                                @enderror
-                            </div>
-                          
-                        
+                            </div>             
                             <div class="form-group">
                                 <label>Tin Nổi Bật</label>
                                 <label class="radio-inline">
