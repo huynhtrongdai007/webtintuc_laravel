@@ -25,7 +25,7 @@ Route::post('progressLogin','HomeController@progressLogin')->name('progressLogin
 
 Route::get('register','HomeController@register')->name('register');
 
-Route::post('storeregister','HomeController@register')->name('storeregister');
+Route::post('storeregister','HomeController@storeregister')->name('storeregister');
 
 Route::get('contact','HomeController@contact')->name('contact');
 
@@ -37,7 +37,8 @@ Route::get('category/{id}','HomeController@category')->name('category');
 
 Route::get('logout','HomeController@logout')->name('logout');
 
-
+Route::get('account','HomeController@account')->name('account');
+Route::post('update_account','HomeController@update_account')->name('update_account');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('login','AdminController@ViewLoginAdmin')->name('login');
@@ -45,14 +46,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('logout','AdminController@logout')->name('logout');
 });
 
+// Route::middleware('check_login')->group(function() {
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-        Route::prefix('news')->name('news.')->group(function() {
-        Route::get('index','AdminController@index')->name('index');
-        Route::get('index','AdminController@index')->name('index');
-    });
-
-Route::middleware('check_login')->group(function() {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     });
@@ -115,4 +111,4 @@ Route::middleware('check_login')->group(function() {
 
 
 });
-});
+// });

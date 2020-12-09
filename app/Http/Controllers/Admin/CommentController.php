@@ -41,6 +41,16 @@ class CommentController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -48,6 +58,7 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::where('id',$id)->delete();
+        return back();
     }
 }

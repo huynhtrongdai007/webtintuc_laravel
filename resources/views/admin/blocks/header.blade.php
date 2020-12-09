@@ -110,6 +110,16 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cube fa-fw"></i>Comment<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.comment.index')}}">Danh Sách Comment</a>
+                            </li>
+                            
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

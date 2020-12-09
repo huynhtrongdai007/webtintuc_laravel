@@ -39,7 +39,7 @@
                     </li>
                     @else
                     <li>
-                    	<a>
+                    	<a href="{{route('account')}}">
                     		<span class ="glyphicon glyphicon-user"></span>
                             {{auth()->user()->name}}
                     	</a>

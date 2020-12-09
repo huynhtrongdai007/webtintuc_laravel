@@ -7,8 +7,8 @@ use App\TheLoai;
 use App\Slide;
 use App\LoaiTin;
 use App\TinTuc;
-use App\Comment;
-
+use App\User;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -19,7 +19,9 @@ class HomeController extends Controller
         $slide = Slide::all();
         view()->share('slide',$slide);
         view()->share('theloai',$theloai);
-        
+        if(Auth::check()===true) {
+            view()->share('user',Auth::user());
+        }
     }
     
     public function home() {
@@ -53,6 +55,21 @@ class HomeController extends Controller
         return view('pages.register');
     }
 
+    public function storeregister(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required|min:3|max:255',
+            'email'=>'required|email',  
+            'password'=>'required|max:8',
+            'passwordAgain'=>'required|same:password'           
+            ]);
+        $data = $request->except('_token','passwordAgain');
+        $data['password'] = Bcrypt($request->password);
+        $data['created_at'] = new DateTime();
+        User::insert($data);
+        return back()->with('message','Register SuccessFully');
+    }
+  
+
     public function contact() {
        
         return view('pages.contact');
@@ -74,7 +91,32 @@ class HomeController extends Controller
         $tinnoibat = TinTuc::where('NoiBat',1)->take(4)->get();
         $tinlienquan = TinTuc::where('idLoaiTin',$tintuc->idLoaiTin)->take(4)->get();
         TinTuc::where('id', $id)->update(['SoLuotXem' => $tintuc->SoLuotXem+1]);  
-        return view('pages.detail',compact('tintuc','tinnoibat','tinlienquan',''));
+        return view('pages.detail',compact('tintuc','tinnoibat','tinlienquan'));
     }
-  
+
+    public function account() {
+        return view('pages.account');
+    }
+
+    public function update_account(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required|min:3|max:255',     
+            ]);
+        $data = $request->except('_token','checkpassword','passwordAgain');
+      
+        $data['updated_at'] = new DateTime();
+        if($request->changePassword=="on") {
+            $validatedData = $request->validate([
+                'password'=>'required|max:8',
+                'passwordAgain'=>'required|same:password'        
+                ]);
+            $data['password'] = Bcrypt($request->password);
+        }
+        $id = auth()->user()->id;
+        User::where('id',$id)->update($data);
+        return back()->with('message','Updated SuccessFully');
+    }
+
+
+   
 }

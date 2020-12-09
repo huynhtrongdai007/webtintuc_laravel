@@ -10,9 +10,9 @@
             @if (count($tl->loaitin) > 0)
             <div class="row-item row">
                 <h3>
-                    <a href="category.html">{{$tl->Ten}}</a> | 	
+                    <a href="{{ route('category', ['id'=>$tl->id,'TenKhongDau'=>$tl->TenKhongDau]) }}">{{$tl->Ten}}</a> | 	
                     @foreach ($tl->loaitin as $lt)
-                     <small><a href="category.html"><i>{{$lt->Ten}}</i></a>/</small>
+                     <small><a href="{{ route('category', ['id'=>$lt->id,'TenKhongDau'=>$tl->TenKhongDau]) }}"><i>{{$lt->Ten}}</i></a>/</small>
                     @endforeach
                 </h3>
                 @php

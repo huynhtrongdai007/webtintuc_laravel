@@ -14,7 +14,7 @@
                     <div class="row-item row">
                         <div class="col-md-3">
             
-                            <a href="detail.html">
+                            <a href="{{ route('detail', ['id'=>$item->id]) }}">
                                 <br>
                                 <img width="200px" height="200px" class="img-responsive" src="{{asset("uploads/tintuc/{$item->Hinh}")}}" alt="">
                             </a>
@@ -23,7 +23,7 @@
                         <div class="col-md-9">
                             <h3>{{$item->TieuDe}}</h3>
                             <p>{{$item->TomTat}}</p>
-                            <a class="btn btn-primary" href="detail.html">Xem Thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="btn btn-primary" href="{{ route('detail', ['id'=>$item->id]) }}">Xem Thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
                         <div class="break"></div>
                     </div>
