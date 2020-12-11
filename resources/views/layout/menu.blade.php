@@ -3,17 +3,17 @@
         <li href="#" class="list-group-item menu1 active">
             Menu
         </li>
-        @foreach ($theloai as $item)
-        @if (count($item->loaitin) > 0)
+        @foreach ($theloai as $tl)
+        @if (count($tl->loaitin) > 0)
             
        
         <li href="#" class="list-group-item menu1">
-           {{$item->Ten}}
+           {{$tl->Ten}}
         </li>
         <ul>
-            @foreach ($item->loaitin as  $item)
+            @foreach ($tl->loaitin as $lt)
             <li class="list-group-item">
-                <a href="{{ route('category', ['id'=>$item->id,'TenKhongDau'=>$item->TenKhongDau]) }}">{{$item->Ten}}</a>
+                <a href="{{ route('category', ['id'=>$lt->id,'/','TenKhongDau'=>$lt->TenKhongDau]) }}">{{$lt->Ten}}</a>
             </li>
             @endforeach
         </ul>

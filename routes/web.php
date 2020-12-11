@@ -29,11 +29,11 @@ Route::post('storeregister','HomeController@storeregister')->name('storeregister
 
 Route::get('contact','HomeController@contact')->name('contact');
 
-Route::get('detail/{id}','HomeController@detail')->name('detail');
+Route::get('detail/{id}/{TenKhongDau}','HomeController@detail')->name('detail');
 
 Route::get('about','HomeController@about')->name('about');
 
-Route::get('category/{id}','HomeController@category')->name('category');
+Route::get('category/{id}/{TenKhongDau}','HomeController@category')->name('category');
 
 Route::get('logout','HomeController@logout')->name('logout');
 

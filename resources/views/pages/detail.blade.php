@@ -77,12 +77,12 @@
                         @foreach ($tinlienquan as $item)
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-5">
-                                <a href="{{ route('detail', ['id'=>$item->id]) }}">
+                                <a href="{{ route('detail', ['id'=>$item->id,'TenKhongDau'=>$item->TieuDeKhongDau]) }}">
                                     <img class="img-responsive" src="{{ asset("uploads/tintuc/$item->Hinh")}}" alt="">
                                 </a>
                             </div>
                             <div class="col-md-7">
-                                <a href="{{ route('detail', ['id'=>$item->id]) }}"><b>{{$item->TieuDe}}</b></a>
+                                <a href="{{ route('detail', ['id'=>$item->id,'TenKhongDau'=>$item->TieuDeKhongDau]) }}"><b>{{$item->TieuDe}}</b></a>
                             </div>
                             <p>{{$item->TomTat}}</p>
                             <div class="break"></div>
@@ -101,12 +101,12 @@
                         @foreach ($tinnoibat as $item)
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-5">
-                                <a href="{{ route('detail', ['id'=>$item->id]) }}">
+                                <a href="{{ route('detail', ['id'=>$item->id,'TenKhongDau'=>$item->TieuDeKhongDau]) }}">
                                     <img class="img-responsive" src="{{ asset("uploads/tintuc/$item->Hinh")}}" alt="">
                                 </a>
                             </div>
                             <div class="col-md-7">
-                                <a href="{{ route('detail', ['id'=>$item->id]) }}"><b>{{$item->TieuDe}}</b></a>
+                                <a href="{{ route('detail', ['id'=>$item->id,'TenKhongDau'=>$item->TieuDeKhongDau]) }}"><b>{{$item->TieuDe}}</b></a>
                             </div>
                             <p>{{$item->TomTat}}</p>
                             <div class="break"></div>
